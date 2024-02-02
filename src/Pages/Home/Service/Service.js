@@ -13,8 +13,8 @@ const Service = ({ service }) => {
                     <p>{description && description.slice(0, 100) + '...'}</p>
                     <p>Price: ${price}</p>
                 </div>
-                <button>Book {name}</button>
             </div>
+            <button className='btn-book-service'>Book {name}</button>
 
         </div>
     );

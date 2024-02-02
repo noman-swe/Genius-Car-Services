@@ -1,11 +1,14 @@
 import React from 'react';
 import Services from '../Services/Services';
+import Experts from '../Experts/Experts';
+import './Home.css';
 
 const Home = () => {
     return (
-        <div>
-            <h2>Home</h2>
+        <div className='home-container'>
+            <h2>Main Home</h2>
             <Services></Services>
+            <Experts></Experts>
         </div>
     );
 };
