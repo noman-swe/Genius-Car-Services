@@ -1,0 +1,17 @@
+.service {
+    width: 320px;
+    height: 520px;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+}
+
+.service-wrapper img {
+    width: 300px;
+    height: 260px;
+    margin: 10px;
+    border-radius: 6px;
+}
+
+.service-info {
+    margin-left: 13px;
+}

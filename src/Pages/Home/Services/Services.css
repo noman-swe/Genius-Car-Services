@@ -1,0 +1,29 @@
+.services-container {
+    margin: 60px 100px;
+}
+
+.services-container h3 {
+    text-align: center;
+}
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+}
+
+/* services responsive */
+
+/* sm-devices */
+@media only screen and (max-width: 576px) {
+    .services {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* md-devices */
+@media only screen and (min-width:577px) and (max-width:992px) {
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

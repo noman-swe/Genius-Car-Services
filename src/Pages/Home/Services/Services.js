@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import './Services.css';
+import Service from '../Home/Service/Service';
 
 const Services = () => {
-    const services = [
-        { id: 1, name: 'Oil Change', price: 100, description: 'Changes/Drain the oil first then wash and after that new oil is given.', img: 'https://ibb.co/Nsg2CJh' },
+    const [services, setServices] = useState([]);
+    useEffect(() => {
+        fetch('services.json')
+            .then(res => res.json())
+            .then(data => setServices(data))
+    }, []);
 
-    ]
     return (
-        <div>
-            <h3>Services</h3>
+        <div className='services-container'>
+            <h3>Our Services</h3>
+            <div className="services">
+                {
+                    services.map(service => <Service
+                        service={service}
+                        key={service.id}
+                    ></Service>)
+                }
+            </div>
+
         </div>
     );
 };
