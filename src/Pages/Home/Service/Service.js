@@ -7,7 +7,7 @@ const Service = ({ service }) => {
         <div className='service'>
             <div className="service-wrapper">
 
-                <img src={img} alt="" />
+                <img src={img} className='img-fluid' alt="" />
                 <div className="service-info">
                     <h2>{name}</h2>
                     <p>{description && description.slice(0, 100) + '...'}</p>
