@@ -1,9 +1,11 @@
 .service {
-    width: 320px;
+    width: 20rem;
     height: 520px;
     border: 1px solid lightgrey;
     border-radius: 6px;
     position: relative;
+    margin: 0px;
+    padding: 0px;
 }
 
 .service-wrapper img {

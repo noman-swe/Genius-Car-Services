@@ -23,7 +23,7 @@ const Experts = () => {
             <h3 className="text-primary text-center">Our Experts</h3>
 
             <div className="container">
-                <div className="row">
+                <div className="row m-0">
                     {
                         experts.map(expert =>
                             <Expert
