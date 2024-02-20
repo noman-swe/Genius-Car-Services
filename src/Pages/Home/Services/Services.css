@@ -29,7 +29,7 @@
 }
 
 /* md-devices */
-@media only screen and (min-width:781px) and (max-width:1200px) {
+@media only screen and (min-width:781px) and (max-width:991px) {
     .services {
         grid-template-columns: repeat(2, 1fr);
     }

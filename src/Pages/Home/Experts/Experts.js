@@ -23,7 +23,7 @@ const Experts = () => {
             <h3 className="text-primary text-center">Our Experts</h3>
 
             <div className="container">
-                <div className="row m-0">
+                <div className="row experts mx-auto">
                     {
                         experts.map(expert =>
                             <Expert
