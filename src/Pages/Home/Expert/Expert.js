@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Expert.css';
 
 const Expert = ({ expert }) => {
     const { img, name } = expert;
@@ -10,8 +11,8 @@ const Expert = ({ expert }) => {
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>
                     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <Link href="#" className="btn btn-primary">Go somewhere</Link>
                 </div>
+                <Link to={''} className="w-100 expert-book-btn btn btn-primary">View Details</Link>
             </div>
         </div>
     );

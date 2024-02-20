@@ -10,7 +10,7 @@ const Service = ({ service }) => {
                 <img src={img} className='img-fluid' alt="" />
                 <div className="service-info">
                     <h2>{name}</h2>
-                    <p>{description && description.slice(0, 100) + '...'}</p>
+                    <p>{description && description.slice(0, 100) + '...see'}</p>
                     <p>Price: ${price}</p>
                 </div>
             </div>
