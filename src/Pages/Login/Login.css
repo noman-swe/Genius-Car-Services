@@ -1,6 +1,9 @@
 .wrapper {
     border: 1px solid #FF460B;
     border-radius: 8px;
+    -webkit-box-shadow: -6px 6px 8px -1px rgba(255, 70, 11, 0.74);
+    -moz-box-shadow: -6px 6px 8px -1px rgba(255, 70, 11, 0.74);
+    box-shadow: -6px 6px 8px -1px rgba(255, 70, 11, 0.74);
 }
 
 .text-oranged {

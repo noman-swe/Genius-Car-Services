@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import './Login.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import googleLogo from '../../images/logos/google-logo.png';
 
@@ -32,34 +32,38 @@ const Login = () => {
 
                     <Form onSubmit={handleFormSubmit}>
 
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group className="mb-2 w-75 mx-auto" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control ref={emailRef} className='login-input-form' type="email" placeholder="Enter email" autoComplete='on' required />
+                            <Form.Control ref={emailRef} className='login-input-form ' type="email" placeholder="Enter email" autoComplete='on' required />
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                             </Form.Text>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group className="mb-2 w-75 mx-auto" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control ref={passwordRef} className='login-input-form' type="password" placeholder="Password" autoComplete='on' required />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                        <Form.Group className="mb-2 w-75 mx-auto" controlId="formBasicCheckbox">
                             <Form.Check type="checkbox" label="Check me out" />
                         </Form.Group>
 
-                        <Button className='btn border-oranged text-oranged w-100' type="submit">
-                            Login
-                        </Button>
+                        <Form.Group className='w-75 mx-auto'>
+                            <Button className='btn border-oranged text-oranged w-100' type="submit">
+                                Login
+                            </Button>
+                        </Form.Group>
 
                     </Form>
 
-                    <p className='text-center mt-3'>New to Genius Car? <span className='text-oranged navigate-register-btn' onClick={navigateToRegister}>Please Register</span></p>
+                    <p className='text-center mt-2'>New to Genius Car? <Link to={'/register'} className='text-oranged navigate-register-btn text-decoration-none' onClick={navigateToRegister}>Please Register</Link></p>
 
-                    <Button className='btn border-oranged text-oranged w-100' type="submit">
-                        Continue With <img height={25} src={googleLogo} alt="" />
-                    </Button>
+                    <div className="w-75 mx-auto">
+                        <Button className='btn border-oranged text-oranged w-100' type="submit">
+                            Continue With <img height={25} src={googleLogo} alt="" />
+                        </Button>
+                    </div>
 
                 </div>
             </Card>
