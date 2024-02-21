@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import './Login.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import googleLogo from '../../images/logos/google-logo.png';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
@@ -12,12 +12,8 @@ const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate();
-    const [
-        signInWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useSignInWithEmailAndPassword(auth);
+    const [signInWithEmailAndPassword, user] = useSignInWithEmailAndPassword(auth);
+    const location = useLocation();
 
     const handleFormSubmit = event => {
         event.preventDefault();
@@ -31,8 +27,10 @@ const Login = () => {
         navigate('/register');
     }
 
+    let form = location.state?.from?.pathname || '/';
+
     if (user) {
-        navigate('/home');
+        navigate(form, { replace: true });
     }
 
     return (
