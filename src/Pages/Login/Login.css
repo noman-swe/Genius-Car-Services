@@ -1,0 +1,31 @@
+.wrapper {
+    border: 1px solid #FF460B;
+    border-radius: 8px;
+}
+
+.text-oranged {
+    color: #FF460B;
+}
+
+.border-oranged {
+    background-color: #FFF;
+    border: 1px solid #FF460B;
+}
+
+.border-oranged:hover {
+    background-color: #ff3e04;
+    border: 1px solid #FF460B;
+    transition: 700ms;
+}
+
+.login-input-form {
+    border: 1px solid #FF460B !important;
+}
+
+.login-input-form:hover {
+    border: 1px solid #FF460B !important;
+}
+
+.navigate-register-btn {
+    cursor: pointer;
+}

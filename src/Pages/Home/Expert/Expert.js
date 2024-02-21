@@ -6,7 +6,7 @@ const Expert = ({ expert }) => {
     const { img, name } = expert;
     return (
         <div className="col-sm-8 col-md-6 col-lg-4 py-2 g-5 mx-auto px-0 ">
-            <div className="card" style={{ width: "20rem" }}>
+            <div className="card mx-auto" style={{ width: "20rem" }}>
                 <img src={img} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{name}</h5>

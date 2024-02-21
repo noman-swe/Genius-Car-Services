@@ -1,12 +1,9 @@
 import React, { useRef } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
-import './Login.css';
 import { useNavigate } from 'react-router-dom';
-
 import googleLogo from '../../images/logos/google-logo.png';
 
-const Login = () => {
-
+const Register = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate();
@@ -27,7 +24,7 @@ const Login = () => {
 
         <div className="container w-50 mx-auto ">
             <Card className='mt-5 p-3 pb-4 wrapper'>
-                <h3 className='text-center  text-oranged'>Please Login </h3>
+                <h3 className='text-center  text-oranged'>Please Register </h3>
                 <div className='mx-5'>
 
                     <Form onSubmit={handleFormSubmit}>
@@ -50,12 +47,12 @@ const Login = () => {
                         </Form.Group>
 
                         <Button className='btn border-oranged text-oranged w-100' type="submit">
-                            Login
+                            Register
                         </Button>
 
                     </Form>
 
-                    <p className='text-center mt-3'>New to Genius Car? <span className='text-oranged navigate-register-btn' onClick={navigateToRegister}>Please Register</span></p>
+                    <p className='text-center mt-3'>Already Registered? <span className='text-oranged navigate-register-btn' onClick={navigateToRegister}>Please Login</span></p>
 
                     <Button className='btn border-oranged text-oranged w-100' type="submit">
                         Continue With <img height={25} src={googleLogo} alt="" />
@@ -65,6 +62,6 @@ const Login = () => {
             </Card>
         </div>
     );
-};
+}
 
-export default Login;
+export default Register;
