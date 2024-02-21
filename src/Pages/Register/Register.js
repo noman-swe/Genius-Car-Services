@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import googleLogo from '../../images/logos/google-logo.png';
-
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Register.css';
+import auth from '../../firebase.init';
 
 const Register = () => {
 
     const navigate = useNavigate();
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
 
     const handleRegisterForm = event => {
         event.preventDefault();
@@ -15,12 +22,21 @@ const Register = () => {
         const email = event.target.email.value;
         const password = event.target.password.value;
         const confirmPassword = event.target.confirmPassword.value;
-        console.log(name, email, password, confirmPassword);
+
+        if (password !== confirmPassword) {
+            return 'error';
+        }
+
+        createUserWithEmailAndPassword(email, password);
 
     }
 
     const navigateToLogin = () => {
         navigate('/login');
+    }
+
+    if (user) {
+        navigate('/home');
     }
 
     return (

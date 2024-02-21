@@ -4,23 +4,35 @@ import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 
 import googleLogo from '../../images/logos/google-logo.png';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Login = () => {
 
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate();
+    const [
+        signInWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useSignInWithEmailAndPassword(auth);
 
     const handleFormSubmit = event => {
         event.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
 
-        console.log(email, password);
+        signInWithEmailAndPassword(email, password);
     }
 
     const navigateToRegister = () => {
         navigate('/register');
+    }
+
+    if (user) {
+        navigate('/home');
     }
 
     return (
