@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import googleLogo from '../../../images/logos/google-logo.png';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Register.css';
 import auth from '../../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Register = () => {
 
@@ -67,10 +67,8 @@ const Register = () => {
                     New to Genius Car? <Link to={'/login'} className='text-oranged navigate-register-btn text-decoration-none' onClick={navigateToLogin}>Please Login</Link>
                 </p>
             </form>
-            <div className="w-50 mx-auto">
-                <button className='mb-4 w-100 btn-submit'>
-                    Continue With <img src={googleLogo} height={24} alt="" />
-                </button>
+            <div className="w-50 mx-auto mb-4">
+                <SocialLogin></SocialLogin>
             </div>
         </div>
     );
