@@ -23,11 +23,16 @@
     padding: 4px 10px;
 }
 
+.btn-submit {
+    background-color: #ee592b;
+    color: #fff;
+}
+
 /* input[type='checkbox'] {
     
 } */
 
 .btn-submit:hover {
-    background-color: #FF460B;
-    color: #fff;
+    /* background-color: #FF460B; */
+    /* color: #fff; */
 }

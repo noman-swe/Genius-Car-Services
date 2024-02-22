@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Register.css';
@@ -9,6 +9,8 @@ const Register = () => {
 
     const navigate = useNavigate();
     const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
+
+    const [agree, setAgree] = useState(false);
 
     const handleRegisterForm = event => {
         event.preventDefault();
@@ -61,12 +63,12 @@ const Register = () => {
                 </div>
 
                 <div className="w-50 mx-auto">
-                    <input className='' type="checkbox" name="terms" id="terms" />
-                    <span className='' htmlFor="terms">Accept Genius Car Terms and Conditions.</span>
+                    <input onClick={() => setAgree(!agree)} className='me-2' type="checkbox" name="terms" id="terms" />
+                    <label className={agree ? 'text-success' : 'text-danger'} htmlFor="terms">Accept Genius Car Terms and Conditions.</label>
                 </div>
 
                 <div className="w-50 mx-auto">
-                    <input type="submit" className='mt-3 w-100 btn-submit' value="Register" />
+                    <input disabled={!agree} type="submit" className='mt-3 w-100 btn-submit' value="Register" />
                 </div>
 
                 <p className='text-center mt-3'>
