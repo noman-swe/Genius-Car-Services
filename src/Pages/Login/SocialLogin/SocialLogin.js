@@ -4,23 +4,24 @@ import googleLogo from '../../../images/logos/google-logo.png';
 import fbLogo from '../../../images/logos/fb.png';
 import githubLogo from '../../../images/logos/github.png';
 import './SocialLogin.css';
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+    const [signInWithGithub, userGit, loadingGit, errorGit] = useSignInWithGithub(auth);
     const navigate = useNavigate();
 
     let errorElement;
-    if (error) {
+    if (error || errorGit) {
         errorElement =
             <div>
-                <p className='text-danger'>Error: {error.message}</p>
+                <p className='text-danger'>Error: {error?.message} {errorGit?.message}</p>
             </div>
     }
 
-    if (user) {
+    if (user || userGit) {
         navigate('/home');
     }
 
@@ -34,12 +35,12 @@ const SocialLogin = () => {
             </div>
             <div className="social-links">
                 <Button onClick={() => signInWithGoogle()} className='btn social-btn-google text-oranged w-100' type="submit">
-                    Google Sign in<img height={25} src={googleLogo} alt="" />
+                    Google Sign in <img height={25} src={googleLogo} alt="" />
                 </Button>
                 <Button className='mt-3 btn social-btn-fb text-oranged w-100' type="submit">
                     Facebook Sign in <img height={25} src={fbLogo} alt="" />
                 </Button>
-                <Button className='mt-3 btn social-btn-github text-oranged w-100' type="submit">
+                <Button onClick={() => signInWithGithub()} className='mt-3 btn social-btn-github text-oranged w-100' type="submit">
                     Github Sign in <img height={25} src={githubLogo} alt="" />
                 </Button>
             </div>

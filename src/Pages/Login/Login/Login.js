@@ -11,7 +11,7 @@ const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate();
-    const [signInWithEmailAndPassword, user] = useSignInWithEmailAndPassword(auth);
+    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
     const location = useLocation();
 
     const handleFormSubmit = event => {
@@ -20,6 +20,11 @@ const Login = () => {
         const password = passwordRef.current.value;
 
         signInWithEmailAndPassword(email, password);
+    }
+
+    let errorElement;
+    if (error) {
+        errorElement = <div><p className='text-danger'>Error: {error.message}</p></div>
     }
 
     const navigateToRegister = () => {
@@ -45,12 +50,10 @@ const Login = () => {
                     <Form onSubmit={handleFormSubmit}>
 
                         <Form.Group className="mb-2 w-75 mx-auto" controlId="formBasicEmail">
-                            {/* <Form.Label>Email address</Form.Label> */}
                             <Form.Control ref={emailRef} className='login-input-form ' type="email" placeholder="Enter email" autoComplete='on' required />
                         </Form.Group>
 
                         <Form.Group className="mb-2 w-75 mx-auto" controlId="formBasicPassword">
-                            {/* <Form.Label>Password</Form.Label> */}
                             <Form.Control ref={passwordRef} className='login-input-form' type="password" placeholder="Password" autoComplete='on' required />
                         </Form.Group>
 
@@ -66,9 +69,11 @@ const Login = () => {
 
                     </Form>
 
+                    {errorElement}
+
                     <p className='text-center mt-2'>New to Genius Car? <Link to={'/register'} className='text-oranged navigate-register-btn text-decoration-none' onClick={navigateToRegister}>Please Register</Link></p>
 
-                    <div className="w-75 mx-auto">
+                    <div className="w-50 mx-auto">
                         <SocialLogin></SocialLogin>
 
                     </div>
