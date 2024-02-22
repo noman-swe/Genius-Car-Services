@@ -27,7 +27,9 @@
     background-color: #ee592b;
     color: #fff;
 }
-
+.disabled-bg{
+    background-color: #ec8461;
+}
 /* input[type='checkbox'] {
     
 } */

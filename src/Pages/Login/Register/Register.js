@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import './Register.css';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -8,11 +8,12 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 const Register = () => {
 
     const navigate = useNavigate();
-    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, user, loading, error] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
     const [agree, setAgree] = useState(false);
+    const [updateProfile, updating, errorOfUpdate] = useUpdateProfile(auth);
 
-    const handleRegisterForm = event => {
+    const handleRegisterForm = async (event) => {
         event.preventDefault();
 
         const name = event.target.name.value;
@@ -24,8 +25,10 @@ const Register = () => {
             return `Hi Mr. ${name}, you got a error`;
         }
 
-        createUserWithEmailAndPassword(email, password);
-
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        console.log('Updated Profile');
+        navigate('/home');
     }
 
     const navigateToLogin = () => {
@@ -33,7 +36,7 @@ const Register = () => {
     }
 
     if (user) {
-        navigate('/home');
+        console.log('User:', user);
     }
 
     return (
@@ -68,7 +71,7 @@ const Register = () => {
                 </div>
 
                 <div className="w-50 mx-auto">
-                    <input disabled={!agree} type="submit" className='mt-3 w-100 btn-submit' value="Register" />
+                    <input disabled={!agree} type="submit" className={`mt-3 w-100 btn-submit ${!agree ? 'disabled-bg' : ''}`} value="Register" title={`${!agree ? "Button is desabled, To enable accept genius car's Terms and Condition." : ""}`} />
                 </div>
 
                 <p className='text-center mt-3'>
