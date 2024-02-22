@@ -1,19 +1,14 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import googleLogo from '../../images/logos/google-logo.png';
+import googleLogo from '../../../images/logos/google-logo.png';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import './Register.css';
-import auth from '../../firebase.init';
+import auth from '../../../firebase.init';
 
 const Register = () => {
 
     const navigate = useNavigate();
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
 
     const handleRegisterForm = event => {
         event.preventDefault();
@@ -24,7 +19,7 @@ const Register = () => {
         const confirmPassword = event.target.confirmPassword.value;
 
         if (password !== confirmPassword) {
-            return 'error';
+            return `Hi Mr. ${name}, you got a error`;
         }
 
         createUserWithEmailAndPassword(email, password);
@@ -45,22 +40,22 @@ const Register = () => {
 
             <form onSubmit={handleRegisterForm} className='form-submit'>
                 <div className="form-group w-50 mx-auto">
-                    <label>Name</label>
+                    {/* <label>Name</label> */}
                     <input className='d-block w-100 mx-auto' type="text" name="name" id="name" placeholder='Your Name' autoComplete='on' required />
                 </div>
 
                 <div className="form-group w-50 mx-auto">
-                    <label>Email</label>
+                    {/* <label>Email</label> */}
                     <input className='d-block w-100' type="email" name="email" id="email" placeholder='Your Email' autoComplete='on' required />
                 </div>
 
                 <div className="form-group w-50 mx-auto">
-                    <label>Password</label>
+                    {/* <label>Password</label> */}
                     <input className='d-block w-100' type="password" name="password" id="password" placeholder='Your Password' autoComplete='on' required />
                 </div>
 
                 <div className="form-group w-50 mx-auto">
-                    <label>Confirm Password</label>
+                    {/* <label>Confirm Password</label> */}
                     <input className='d-block w-100' type="password" name="confirmPassword" id="confirm-password" placeholder='Your Confirm Password' autoComplete='on' required />
                 </div>
 

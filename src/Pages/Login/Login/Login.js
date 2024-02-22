@@ -1,11 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button, Card, Form } from 'react-bootstrap';
 import './Login.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
-import googleLogo from '../../images/logos/google-logo.png';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
+import auth from '../../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 const Login = () => {
 
@@ -29,9 +28,12 @@ const Login = () => {
 
     let form = location.state?.from?.pathname || '/';
 
-    if (user) {
-        navigate(form, { replace: true });
-    }
+    // this is added for solving error - //Cannot update a component (`BrowserRouter`) while rendering a different component (`Login`). To locate the bad setState() call inside `Login`
+    useEffect(() => {
+        if (user) {
+            navigate(form, { replace: true });
+        }
+    }, [user, form, navigate]);
 
     return (
 
@@ -43,15 +45,12 @@ const Login = () => {
                     <Form onSubmit={handleFormSubmit}>
 
                         <Form.Group className="mb-2 w-75 mx-auto" controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
+                            {/* <Form.Label>Email address</Form.Label> */}
                             <Form.Control ref={emailRef} className='login-input-form ' type="email" placeholder="Enter email" autoComplete='on' required />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                            </Form.Text>
                         </Form.Group>
 
                         <Form.Group className="mb-2 w-75 mx-auto" controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
+                            {/* <Form.Label>Password</Form.Label> */}
                             <Form.Control ref={passwordRef} className='login-input-form' type="password" placeholder="Password" autoComplete='on' required />
                         </Form.Group>
 
@@ -70,9 +69,8 @@ const Login = () => {
                     <p className='text-center mt-2'>New to Genius Car? <Link to={'/register'} className='text-oranged navigate-register-btn text-decoration-none' onClick={navigateToRegister}>Please Register</Link></p>
 
                     <div className="w-75 mx-auto">
-                        <Button className='btn border-oranged text-oranged w-100' type="submit">
-                            Continue With <img height={25} src={googleLogo} alt="" />
-                        </Button>
+                        <SocialLogin></SocialLogin>
+
                     </div>
 
                 </div>

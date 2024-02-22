@@ -59,7 +59,7 @@ const Header = () => {
                             </Nav.Link>
                             {
                                 user ?
-                                    <button className='' onClick={handleLogOut} >Logout</button>
+                                    <button className='log-out btn my-auto text-white' onClick={handleLogOut} >Logout</button>
                                     :
                                     <Nav.Link as={Link} to={'/login'} eventKey={2} >
                                         Login

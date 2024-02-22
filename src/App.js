@@ -6,10 +6,10 @@ import Header from './Pages/Shared/Header/Header';
 import Footer from './Pages/Shared/Footer/Footer';
 import ServiceDetail from './Pages/ServiceDetail/ServiceDetail';
 import NotFound from './Pages/Shared/NotFound/NotFound';
-import Login from './Pages/Login/Login';
-import Register from './Pages/Register/Register';
 import Checkout from './Pages/CheckOut/Checkout/Checkout';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
+import Register from './Pages/Login/Register/Register';
+import Login from './Pages/Login/Login/Login';
 
 function App() {
   return (
