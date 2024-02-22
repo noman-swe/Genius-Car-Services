@@ -5,6 +5,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import Loading from '../../Shared/Loading/Loading';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
 
@@ -28,16 +32,6 @@ const Login = () => {
         errorElement = <p className='text-danger'>Error: {error?.message}</p>
     }
 
-    const navigateToRegister = () => {
-        navigate('/register');
-    }
-
-    const resetPassword = async () => {
-        const email = emailRef.current.value;
-        await sendPasswordResetEmail(email);
-        alert("Sent email.");
-    }
-
     let form = location.state?.from?.pathname || '/';
     // this is added for solving error - //Cannot update a component (`BrowserRouter`) while rendering a different component (`Login`). To locate the bad setState() call inside `Login`
     useEffect(() => {
@@ -45,6 +39,29 @@ const Login = () => {
             navigate(form, { replace: true });
         }
     }, [user, form, navigate]);
+
+
+
+
+    const navigateToRegister = () => {
+        navigate('/register');
+    }
+
+    // const notify = () => toast("Wow so easy!");
+
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast("Sent email.");
+        } else {
+            toast('please enter your email address.');
+        }
+    }
+
+    if (loading) {
+        return <Loading></Loading>
+    }
 
     return (
 
@@ -74,15 +91,18 @@ const Login = () => {
                     <span className='mt-3'>{errorElement}</span>
 
                     <p className='text-center mt-2'>New to Genius Car? <Link to={'/register'} className='text-oranged navigate-register-btn text-decoration-none' onClick={navigateToRegister}>Please Register</Link></p>
-                    <p className='text-center mt-2'>Forget password? <Link to={'/register'} className='text-oranged navigate-register-btn text-decoration-none' onClick={resetPassword}>Click here.</Link></p>
+                    <p className='text-center mt-2'>
+                        Forget password?
+                        <button className='text-oranged forget-btn text-decoration-none' onClick={resetPassword}>Reset Password</button>
+                    </p>
 
                     <div className="w-50 mx-auto">
                         <SocialLogin></SocialLogin>
-
                     </div>
 
                 </div>
             </Card>
+            <ToastContainer />
         </div>
     );
 };
