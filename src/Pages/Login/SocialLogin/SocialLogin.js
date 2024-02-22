@@ -15,10 +15,7 @@ const SocialLogin = () => {
 
     let errorElement;
     if (error || errorGit) {
-        errorElement =
-            <div>
-                <p className='text-danger'>Error: {error?.message} {errorGit?.message}</p>
-            </div>
+        errorElement = <p className='text-danger'>Error: {error?.message} {errorGit?.message}</p>
     }
 
     if (user || userGit) {

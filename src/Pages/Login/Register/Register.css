@@ -23,9 +23,9 @@
     padding: 4px 10px;
 }
 
-.form-group label {
-    font-size: 18px;
-}
+/* input[type='checkbox'] {
+    
+} */
 
 .btn-submit:hover {
     background-color: #FF460B;

@@ -54,9 +54,15 @@ const Register = () => {
                     <input className='d-block w-100' type="password" name="password" id="password" placeholder='Your Password' autoComplete='on' required />
                 </div>
 
-                <div className="form-group w-50 mx-auto">
+                <div className="form-group w-50 mx-auto
+                ">
                     {/* <label>Confirm Password</label> */}
                     <input className='d-block w-100' type="password" name="confirmPassword" id="confirm-password" placeholder='Your Confirm Password' autoComplete='on' required />
+                </div>
+
+                <div className="w-50 mx-auto">
+                    <input className='' type="checkbox" name="terms" id="terms" />
+                    <span className='' htmlFor="terms">Accept Genius Car Terms and Conditions.</span>
                 </div>
 
                 <div className="w-50 mx-auto">

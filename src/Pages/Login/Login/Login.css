@@ -12,11 +12,11 @@
 
 .border-oranged {
     background-color: #FFF;
-    border: 1px solid #FF460B;
+    border: 1px solid #FF460B !important;
 }
 
 .border-oranged:hover {
-    background-color: #ff3e04;
+    background-color: #ff3e04 !important;
     border: 1px solid #FF460B;
     transition: 700ms;
 }
