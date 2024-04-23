@@ -9,6 +9,7 @@ import Loading from '../../Shared/Loading/Loading';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import PageTitle from '../../Shared/PageTitle/PageTitle';
 
 const Login = () => {
 
@@ -29,7 +30,7 @@ const Login = () => {
 
     let errorElement;
     if (error) {
-        errorElement = <p className='text-danger'>Error: {error?.message}</p>
+        errorElement = <p className='text-danger text-center mt-3'>Error: {error?.message}</p>
     }
 
     let form = location.state?.from?.pathname || '/';
@@ -66,17 +67,21 @@ const Login = () => {
     return (
 
         <div className="container w-50 mx-auto ">
+            {/* title */}
+            <PageTitle title={'Login'}></PageTitle>
+            {/* title */}
+
             <Card className='mt-5 p-3 pb-4 wrapper'>
                 <h3 className='text-center  text-oranged'>Please Login </h3>
                 <div className='mx-5'>
 
                     <Form onSubmit={handleFormSubmit}>
 
-                        <Form.Group className="mb-2 w-75 mx-auto" controlId="formBasicEmail">
+                        <Form.Group className="mb-3 w-75 mx-auto" controlId="formBasicEmail">
                             <Form.Control ref={emailRef} className='login-input-form ' type="email" placeholder="Enter email" autoComplete='on' required />
                         </Form.Group>
 
-                        <Form.Group className="mb-2 w-75 mx-auto" controlId="formBasicPassword">
+                        <Form.Group className="mb-3 w-75 mx-auto" controlId="formBasicPassword">
                             <Form.Control ref={passwordRef} className='login-input-form' type="password" placeholder="Password" autoComplete='on' required />
                         </Form.Group>
 
@@ -88,15 +93,16 @@ const Login = () => {
 
                     </Form>
 
-                    <span className='mt-3'>{errorElement}</span>
+                    <span>{errorElement}</span>
 
-                    <p className='text-center mt-2'>New to Genius Car? <Link to={'/register'} className='text-oranged navigate-register-btn text-decoration-none' onClick={navigateToRegister}>Please Register</Link></p>
-                    <p className='text-center mt-2'>
+                    <p className='text-center mt-4 mb-0'>New to Genius Car? <Link to={'/register'} className='text-oranged navigate-register-btn text-decoration-none' onClick={navigateToRegister}>Please Register</Link></p>
+
+                    <p className='text-center mt-2 mb-0'>
                         Forget password?
-                        <button className='text-oranged forget-btn text-decoration-none' onClick={resetPassword}>Reset Password</button>
+                        <button className='text-oranged border-0 bg-white text-decoration-none btn-link' onClick={resetPassword}>Let's Reset.</button>
                     </p>
 
-                    <div className="w-50 mx-auto">
+                    <div className="w-75 mx-auto">
                         <SocialLogin></SocialLogin>
                     </div>
 

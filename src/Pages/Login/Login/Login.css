@@ -32,3 +32,8 @@
 .navigate-register-btn {
     cursor: pointer;
 }
+
+.forget-btn{
+    border: 0px;
+    background-color: #fff;
+}
